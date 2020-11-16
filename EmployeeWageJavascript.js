@@ -40,3 +40,14 @@ for(var i = 0; i < NUM_OF_WORKING_DAYS; i++){
 }
 let empWage = empHrs * WAGE_PER_HOUR;
 console.log("Total hrs : " + empHrs + " Emp wage : " + empWage);
+
+//UC5 Total Employee Wage
+let totalEmpHrs = 0;
+while(totalEmpHrs < MAX_WORKING_HRS && totalWorkingDays < NUM_OF_WORKING_DAYS){
+    totalWorkingDays++;
+    let empCheck = Math.floor(Math.random() * 10)%3;
+    let empHrs = getWorkingHrs(empCheck);
+    totalEmpHrs += empHrs;
+}
+let employeeWage = totalEmpHrs * WAGE_PER_HOUR;
+console.log("Total hrs : "+totalEmpHrs+" Total Employee Wage : "+employeeWage);
