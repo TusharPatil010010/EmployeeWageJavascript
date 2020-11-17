@@ -56,3 +56,49 @@ while(totalEmpHrs < MAX_WORKING_HRS && totalWorkingDays < NUM_OF_WORKING_DAYS){
 }
 let employeeWage = calcDailyWage(totalEmpHrs);
 console.log("Total hrs : " + totalEmpHrs + " Total Employee Wage : " + employeeWage);
+
+// UC7 Using array functions
+let totalEmpWage = 0;
+function sum(dailyWage){
+    totalEmpWage +=dailyWage;
+}
+empWageArr.forEach(sum);
+console.log(" Total employee wage using forEach: "+totalEmpWage);
+
+function totalWages(totalWage, dailyWage){
+    console.log("TotalWages function: "+totalWage)
+    return totalEmpWage + dailyWage;
+}
+console.log("With reduce "+empWageArr.reduce(totalWages,0));
+let dailyCounter = 0;
+function dayAlongWithWage(dailyWage){
+    dailyCounter++;
+    return dailyCounter + " = " + dailyWage;
+}
+let mapDayWithWage = empWageArr.map(dayAlongWithWage);
+console.log(" Day along with daily wage ");
+console.log(mapDayWithWage);
+
+function fullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+let fullDayWageArr = mapDayWithWage.filter(fullTimeWage);
+console.log(" Full Time wage : ");
+console.log(fullDayWageArr);
+
+console.log(" Find first occurence of full time wage: "+ mapDayWithWage.find(fullTimeWage));
+
+function isAllFullTimeWage(dailyWage){
+    return dailyWage.includes("160");
+}
+console.log(" Check all elements have full time wage: "+fullDayWageArr.every(isAllFullTimeWage));
+
+function isAnyPartTimeWage(dailyWage){
+    return dailyWage.includes("80");
+}
+console.log(" Check if any part time wage: "+mapDayWithWage.some(isAnyPartTimeWage));
+function totalDaysWorked(numOfDays,dailyWage){
+    if(dailyWage > 0) return numOfDays + 1;
+    return numOfDays;
+}
+console.log(" Number of days employee worked : "+ empWageArr.reduce(totalDaysWorked,0));
